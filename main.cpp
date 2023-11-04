@@ -110,9 +110,9 @@ void operations(string& operation,Bigreal& a,Bigreal& b){
 void solve(){
     string s1,s2,operation;
     cout<<"Please put the first correct big real numbers: \n";
-    cin>>s1;
+    getline(cin,s1);
     cout<<"Please put the second correct big real numbers: \n";
-    cin>>s2;
+    getline(cin,s2);
     Bigreal a(s1),b(s2),c;
     cout<<"To compare enter please choose if you want to see if they are:\n"
           "     Equal press =\n"
