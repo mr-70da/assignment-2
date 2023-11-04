@@ -68,20 +68,20 @@ void operations(string& operation,Bigreal& a,Bigreal& b){
         }
     }
     else if(operation=="print"){
-        cout<<"The first number = "<<a;
-        cout<<"The second number = "<<b;
+        cout<<"The first number = "<<a<<'\n';
+        cout<<"The second number = "<<b<<'\n';
         menu(operation);
         return operations(operation,a,b);
     }
     else if(operation=="sign"){
-        cout<<"The sign of the first number is "<<a.sign_of_Bigreal();
-        cout<<"The sign of the second number is "<<b.sign_of_Bigreal();
+        cout<<"The sign of the first number is "<<a.sign_of_Bigreal()<<'\n';
+        cout<<"The sign of the second number is "<<b.sign_of_Bigreal()<<'\n';
         menu(operation);
         return operations(operation,a,b);
     }
     else if(operation=="size"){
-        cout<<"The size of the first number is "<<a.size();
-        cout<<"The size of the second number is "<<b.size();
+        cout<<"The size of the first number is "<<a.size()<<'\n';
+        cout<<"The size of the second number is "<<b.size()<<'\n';
         menu(operation);
         return operations(operation,a,b);
     }
