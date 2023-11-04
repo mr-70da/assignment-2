@@ -1,8 +1,6 @@
 #include "Bigreal.h"
 using namespace std;
-Bigreal::Bigreal(string& num){/*
- * num,regex("[+-]?\\d*.?\\d+")
- */
+Bigreal::Bigreal(string& num){
     if(regex_match(num,regex("[+-]?\\d*.?\\d+"))){
         if(num[0]=='-'&&num[1]=='.'){
             sign = '-';
