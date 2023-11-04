@@ -1,6 +1,8 @@
 #include "Bigreal.h"
 using namespace std;
-Bigreal::Bigreal(string& num){
+Bigreal::Bigreal(string& num){/*
+ * num,regex("[+-]?\\d*.?\\d+")
+ */
     if(regex_match(num,regex("[+-]?\\d*.?\\d+"))){
         if(num[0]=='-'&&num[1]=='.'){
             sign = '-';
@@ -23,10 +25,15 @@ Bigreal::Bigreal(string& num){
         else if(it!=string::npos&&isdigit(num[1])){
             real = num.substr(1, num.size() - 1);
         }
+        else if(it==string::npos){
+            goto end;
+        }
         else{
             number = num;
         }
     }
+    end:
+
     if(number.empty()){
         number = "0";
     }
@@ -350,6 +357,12 @@ Bigreal Bigreal::operator-(Bigreal b) {
 ostream &operator<<(ostream &out, const Bigreal& num){
     out<<num.sign<<num.number<<"."<<num.real<<'\n';
     return out;
+}
+bool check(Bigreal& b){
+    if(b.real=="0"){
+        return false;
+    }
+    return true;
 }
 int Bigreal::size(){
     return (int)number.size()+(int)real.size()+1;
