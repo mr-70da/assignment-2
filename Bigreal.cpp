@@ -141,7 +141,7 @@ bool Bigreal::operator==(Bigreal &b) {
             real.push_back('0');
         }
     }
-    deque<int> integar1, integar2, result_int, real1, real2, result_real;
+    deque<int> integar1, integar2, real1, real2;
     for (int i = 0; i < number.size(); ++i) {
         integar1.push_back(number[i] - '0');
         integar2.push_back(b.number[i] - '0');
@@ -157,7 +157,7 @@ bool Bigreal::operator==(Bigreal &b) {
         }
     }
     for (int i = 0; i < real1.size()&&equal; ++i) {
-        if(integar1[i]!=integar2[i]){
+        if(real1[i]!=real2[i]){
             equal = false;
         }
     }
