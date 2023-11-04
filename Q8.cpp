@@ -33,6 +33,7 @@ void pattern(int n, int i) {
 }
 void solve(){
     int n;
+    cout<<"Please insert N\n";
     cin>>n;
     pattern(n,0);
 }
