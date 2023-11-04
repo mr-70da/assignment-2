@@ -17,6 +17,7 @@ public:
     [[nodiscard]] char sign_of_Bigreal() const;
     explicit Bigreal(string& number);
     static Bigreal set_values();
+    friend bool check(Bigreal& b);
     Bigreal operator+(Bigreal b);
     Bigreal operator-(Bigreal b);
     bool operator>(Bigreal& b);
