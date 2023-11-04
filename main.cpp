@@ -114,6 +114,14 @@ void solve(){
     cout<<"Please put the second correct big real numbers: \n";
     getline(cin,s2);
     Bigreal a(s1),b(s2),c;
+    while(!check(a)){
+        cout<<"please enter the first big real correctly \n";
+       a = a.set_values();
+    }
+    while(!check(b)){
+        cout<<"please enter the second big real correctly \n";
+        b = b.set_values();
+    }
     cout<<"To compare enter please choose if you want to see if they are:\n"
           "     Equal press =\n"
           "     Greater press >\n"
