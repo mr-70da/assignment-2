@@ -20,6 +20,8 @@ public:
     friend bool check(Bigreal& b);
     Bigreal operator+(Bigreal b);
     Bigreal operator-(Bigreal b);
+    Bigreal operator()(string a);
+    static Bigreal operator()(double a);
     bool operator>(Bigreal& b);
     bool operator==(Bigreal& b);
     bool operator<(Bigreal& b);
