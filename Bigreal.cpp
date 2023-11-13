@@ -155,19 +155,23 @@ bool Bigreal::operator==(Bigreal &b) {
         real1.push_back(real[i] - '0');
         real2.push_back(b.real[i] - '0');
     }
-    bool equal  = true;
-    for (int i = 0; i < integar1.size()&&equal; ++i) {
-        if(integar1[i]!=integar2[i]){
-            equal = false;
+    if(sign == b.sign){
+        bool equal = true;
+        for (int i = 0; i < integar1.size() && equal; ++i) {
+            if (integar1[i] != integar2[i]) {
+                equal = false;
+            }
         }
-    }
-    for (int i = 0; i < real1.size()&&equal; ++i) {
-        if(real1[i]!=real2[i]){
-            equal = false;
+        for (int i = 0; i < real1.size() && equal; ++i) {
+            if (real1[i] != real2[i]) {
+                equal = false;
+            }
         }
-    }
-    if(equal){
-        return true;
+        if (equal) {
+            return true;
+        } else {
+            return false;
+        }
     }
     else{
         return false;
@@ -196,7 +200,7 @@ bool Bigreal::operator<(Bigreal &b) {
     }
     if(sign=='+'&&b.sign=='-'){
         return false;
-    }else if(sign=='-'&&b.sign=='-'||sign=='+'&&b.sign=='+'){
+    }else if(sign=='+'&&b.sign=='+'){
         if(number<b.number){
             return true;
         }
@@ -208,6 +212,19 @@ bool Bigreal::operator<(Bigreal &b) {
                 return true;
             }
             else{
+                return false;
+            }
+        }
+    }
+    else if(sign=='-'&&b.sign=='-'){
+        if (number > b.number) {
+            return true;
+        } else if (number < b.number) {
+            return false;
+        } else {
+            if (real > b.real) {
+                return true;
+            } else {
                 return false;
             }
         }
@@ -237,26 +254,38 @@ bool Bigreal::operator>(Bigreal &b) {
             real.push_back('0');
         }
     }
-    if(sign=='-'&&b.sign=='+'){
-        return false;
-    }else if(sign=='-'&&b.sign=='-'||sign=='+'&&b.sign=='+'){
-        if(number>b.number){
+    {
+        if (sign == '-' && b.sign == '+') {
+            return false;
+        } else if (sign == '+' && b.sign == '+') {
+            if (number > b.number) {
+                return true;
+            } else if (number < b.number) {
+                return false;
+            } else {
+                if (real > b.real) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        else if(sign == '-' && b.sign == '-' ){
+            if (number < b.number) {
+                return true;
+            } else if (number > b.number) {
+                return false;
+            } else {
+                if (real < b.real) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        else {
             return true;
         }
-        else if(number<b.number){
-            return false;
-        }
-        else{
-            if(real>b.real){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-    }
-    else{
-        return true;
     }
 }
 Bigreal Bigreal::operator-(Bigreal b) {
@@ -374,3 +403,18 @@ Bigreal Bigreal::set_values() {
     Bigreal a(s);
     return a;
 }
+
+Bigreal Bigreal::operator()(string a) {
+    return Bigreal(a);
+}
+
+Bigreal Bigreal::operator()(double a) {
+    string bigreal = to_string(a);
+    return Bigreal(bigreal);
+}
+
+
+
+
+
+
