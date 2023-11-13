@@ -103,20 +103,20 @@ void Instruction::case_three(int operand1, int operand2,Memory& memory,Register 
 }
 
 void Instruction::case_four(string subst, Register& registers) {
-    int copy,x,y;
-    x = stoi(string(1,subst[2]),nullptr,16);//0x42
-    copy = registers.get_register(x);
-    y = stoi(string(1,subst[3]),nullptr,16);
-    registers.write_register(y,copy);
+    int copy,register1,register2;
+    register1 = stoi(string(1,subst[2]),nullptr,16);//0x42
+    copy = registers.get_register(register1);
+    register2 = stoi(string(1,subst[3]),nullptr,16);
+    registers.write_register(register2,copy);
 }
 
 void Instruction::case_five(string subst,string result, bitset<8> bits1, bitset<8> bits2, bitset<8> result_bits, bitset<8> xr,
                             Register &registers,int operand1) {
-    int x,y;
-    x = stoi(string(1,subst[2]),nullptr,16);
-    y = stoi(string(1,subst[3]),nullptr,16);
-    bits1 = Bits(registers.get_register(x));
-    bits2 = Bits(registers.get_register(y));
+    int register1,register2;
+    register1 = stoi(string(1,subst[2]),nullptr,16);
+    register2 = stoi(string(1,subst[3]),nullptr,16);
+    bits1 = Bits(registers.get_register(register1));
+    bits2 = Bits(registers.get_register(register2));
     int i,carry,index_of_1;
     carry= 0;
     i = 0;
