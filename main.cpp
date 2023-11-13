@@ -10,6 +10,7 @@ string menu(string& operation){
           "To show sign enter sign\n"
           "To show the size enter size\n"
           "To print the sum enter sum\n"
+          "To print the addition of the first bigreal to number you enter enter number\n"
           "To print the subtraction enter subtract\n"
           "If you want to change the value of the first number enter set1\n"
           "If you want to change the value of the second number enter set2\n"
@@ -22,6 +23,15 @@ void operations(string& operation,Bigreal& a,Bigreal& b){
     if(operation == "set1"){
         cout<<"Please enter the new first number:\n";
         a = a.set_values();
+        menu(operation);
+        return operations(operation,a,b);
+    }
+    else if(operation =="number"){
+        string number;
+        cout<<"please enter the number to add \n";
+        cin>>number;
+        c = a + c(number);
+        cout<<"The sum of "<<a<<" and "<<number<<" = "<<c<<'\n';
         menu(operation);
         return operations(operation,a,b);
     }
@@ -116,7 +126,7 @@ void solve(){
     Bigreal a(s1),b(s2),c;
     while(!check(a)){
         cout<<"please enter the first big real correctly \n";
-       a = a.set_values();
+        a = a.set_values();
     }
     while(!check(b)){
         cout<<"please enter the second big real correctly \n";
@@ -130,6 +140,7 @@ void solve(){
           "To show sign enter sign\n"
           "To show the size enter size\n"
           "To print the sum enter sum\n"
+          "To print the addition of the first bigreal to number you enter enter number\n"
           "To print the subtraction enter subtract\n"
           "If you want to change the value of the first number enter set1\n"
           "If you want to change the value of the second number enter set2\n"
