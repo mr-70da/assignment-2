@@ -28,9 +28,8 @@ public:
                    Register& registers,int operand1);
 };
 class Machine{
-private:
-    [[maybe_unused]] int programCounter;
 public:
+    int programCounter;
     Instruction instructions;
     Register registers;
     Memory memory;
