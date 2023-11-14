@@ -161,7 +161,7 @@ void Machine::executeStep(string & s) {
             instructions.case_four(subst,registers);
             break;
         case 5:
-            instructions.case_five(subst,result,bits1,bits2,result_bits,xr,registers,operand1);
+            instructions.case_five(subst,result,bits1,bits2,result_bits,registers,operand1);
             break;
         case 11:
             int copy;
