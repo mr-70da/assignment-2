@@ -144,7 +144,7 @@ void Machine::executeStep(string & s) {
     int operand1 = stoi(s.substr(4, 3), nullptr, 16);
     string subst = s.substr(8, 4);
     int operand2 = stoi(subst, nullptr, 16);
-    bitset<8>bits1,bits2,result_bits,xr;string result;
+    bitset<8>bits1,bits2,result_bits;string result;
     memory.write(programCounter++,op*10+operand1);
     memory.write(programCounter++,operand2);
     switch (op) {
