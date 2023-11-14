@@ -24,7 +24,7 @@ public:
     void case_three(int operand1,int operand2,Memory& mem,Register reg);
     void case_four(string subst,Register& registers);
     static bitset<8> Bits(int number);
-    void case_five(string subst,string result,bitset<8> bits1,bitset<8> bits2,bitset<8> result_bits,bitset<8> xr,
+    void case_five(string subst,string result,bitset<8> bits1,bitset<8> bits2,bitset<8> result_bits,
                    Register& registers,int operand1);
 };
 class Machine{
