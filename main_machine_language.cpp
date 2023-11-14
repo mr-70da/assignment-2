@@ -25,7 +25,7 @@ int menu(Machine& machine,int& operation){
                 cout<<"There is an invalid operation in this line "<<'\n';
             break;
         case 3:
-            cout<<"Program Counter = "<<machine.programCounter<<'\n';
+            cout<<"Program Counter = "<<machine.programCounter/2<<'\n';
             cout<<"Registers: \n";
             for (int i = 0; i < 16; ++i) {
                 cout<<"r"<<::hex<<i<<" points to "<<::hex<<machine.registers.get_register(i)<<'\n';
