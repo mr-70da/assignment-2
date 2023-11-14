@@ -152,7 +152,7 @@ void Instruction::case_five(string subst,string result, bitset<8> bits1, bitset<
         result_bits^=xr;
     }
     result = result_bits.to_string();
-    registers.write_register(operand1,-(int)bitset<8>(result).to_ulong());
+    registers.write_register(operand1,(int)bitset<8>(result).to_ulong());
 }
 
 void Machine::executeStep(string & s) {
@@ -190,7 +190,7 @@ void Machine::executeStep(string & s) {
             }
             break;
         case 12:
-            cout<<"Exit Successfully\n";
+            cout<<"Finished code Successfully\n";
             EXIT_SUCCESS;
             break;
         default:
