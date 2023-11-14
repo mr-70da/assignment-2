@@ -74,10 +74,6 @@ bool Instruction::fetch(string& operation) {
     if(operation[2]=='4'&&operation[6]!='0'&&isxdigit(static_cast<unsigned char>(operation[10]))&&
     isxdigit(static_cast<unsigned char>(operation[11]))){
         return false;
-    }//0x2 0x0 0xA3
-    if(operation[2]=='2'&&stoi(operation.substr(10), nullptr,16)>127||
-    operation[2]=='2'&&stoi(operation.substr(10), nullptr,16)<-127){
-        return false;
     }
     if(operation[2]=='C'&&operation[6]!='0'&&operation[10]!='0'&&operation[11]!='0'){
         return false;
@@ -110,14 +106,14 @@ void Instruction::case_four(string subst, Register& registers) {
     registers.write_register(register2,copy);
 }
 
-void Instruction::case_five(string subst,string result, bitset<8> bits1, bitset<8> bits2, bitset<8> result_bits, bitset<8> xr,
+void Instruction::case_five(string subst,string result, bitset<8> bits1, bitset<8> bits2, bitset<8> result_bits,
                             Register &registers,int operand1) {
     int register1,register2;
     register1 = stoi(string(1,subst[2]),nullptr,16);
     register2 = stoi(string(1,subst[3]),nullptr,16);
     bits1 = Bits(registers.get_register(register1));
     bits2 = Bits(registers.get_register(register2));
-    int i,carry,index_of_1;
+    int i,carry;
     carry= 0;
     i = 0;
     while(i<8){
@@ -138,18 +134,6 @@ void Instruction::case_five(string subst,string result, bitset<8> bits1, bitset<
             carry = 0;
         }
         i++;
-    }
-    if(result_bits[7]==1){
-        for (int j = 0; j < 8; ++j) {
-            if(result_bits[j]==1){
-                index_of_1 = j;
-                break;
-            }
-        }
-        for (int j = ++index_of_1; j < 8; ++j) {
-            xr.set(j);
-        }
-        result_bits^=xr;
     }
     result = result_bits.to_string();
     registers.write_register(operand1,(int)bitset<8>(result).to_ulong());
